@@ -39,11 +39,34 @@ void LinkedList<T>::remove(T val) {
 
     if(current->next != nullptr){
         Node* temp = current->next;
+        current->next = current->next->next;
+        delete temp;
+
     }
 }
 
 
+template <typename T>
+bool LinkedList<T>::search(T val) {
+    Node* current = head;
+    while(current != nullptr){
+        if(current->val == nullptr){
+            return true;
+        }
+        current = current->next;
+    }
+    return false;
+}
 
+template <typename T>
+void LinkedList<T>::print() {
+    Node* current = head;
+    while (current != nullptr){
+        std::cout << current->data << " -> ";
+        current = current->data;
+    }
+    std::cout << "nullptr" << std::endl;
+}
 
 
 
