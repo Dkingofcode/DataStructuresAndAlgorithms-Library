@@ -13,6 +13,13 @@
 
 #include "sorting.hpp"
 
+//  Bubble Sort Algorithm
+// bubbleSort(array)
+//   for i <= 1 to indexofLastUnSortedElement - 1
+//     if leftElement > rightElement  
+//        swap leftElement and rightElement
+//  end bubbleSort
+
 void Sorting::bubbleSort(std::vector<int>& arr) {
     int n = arr.size();
     for(int i = 0; i < n - 1; ++i){
@@ -23,6 +30,19 @@ void Sorting::bubbleSort(std::vector<int>& arr) {
         }
     }
 }
+
+//  Insertion Sort Algorithm
+
+//  insertionSort(array)
+//    mark first element as sorted
+//    for each unsorted element
+//      extract element X
+//      for j <= lastSortedElement down to 0
+//         if currentElement j > X
+//           move sortedElement to the right by 1 
+//      break loop
+//   end insertionSort     
+
 
 void Sorting::insertionSort(std::vector<int>& arr){
     int n = arr.size();
@@ -45,9 +65,19 @@ void Sorting::insertionSort(std::vector<int>& arr){
 }
 
 
+//    Selection sort
+//   selectionSort(array)
+//     repeat(size - 1) times
+//     set the first unsorted element as the minimum
+//     for each of the unsorted elements
+//       if element < minimum
+//         set element as newMinumum
+//     swap minimum with first unsorted position
+//    end selectionSort 
 
+void Sorting::selectionSort(std::vector<int>& arr) {
 
-
+}
 
 
 

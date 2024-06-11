@@ -6,6 +6,10 @@
 class Sorting {
     public: 
       static void bubbleSort(std::vector<int>& arr);
+
+      static void insertionSort(std::vector<int>& arr);
+
+      static void selectionSort(std::vector<int>& arr);
 };
 
 #include "sorting.cpp"
