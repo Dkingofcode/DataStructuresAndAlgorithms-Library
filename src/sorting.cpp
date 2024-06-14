@@ -76,6 +76,95 @@ void Sorting::insertionSort(std::vector<int>& arr){
 //    end selectionSort 
 
 void Sorting::selectionSort(std::vector<int>& arr) {
+       
+       for(int i = 0; i < arr.size() - 1; i++){
+         int minimum = arr[i];
+         int j = i + 1;
+         while(j >= 0 && arr[j] < minimum){
+            minimum = arr[j];
+            arr[i] = minimum;
+            j--;
+         }
+
+
+       }
+}
+
+ 
+   void merge(std::vector<int> arr, int p, int q, int r){
+
+    // Create L and R
+    int n1 = q - p + 1;
+    int n2 = r - q;
+
+    int L[n1], M[n2];
+
+    for(int i = 0; i < n1; i++){
+        L[i] = arr[p + i];
+    }
+
+    for(int j = 0; j < n2; j++){
+        M[j] = arr[q + 1 + j];
+    }
+
+    // Maintain current index of sub-arrays and main array
+    int i, j, k;
+    i = 0;
+    j = 0;
+    k = p;
+
+    // Until we reach either end of L or R, pick largest
+    // elements from L or M and place them in the correct position
+
+    while(i < n1 && j < n2){
+        if(L[i] <= M[j]){
+            arr[k] = L[i];
+            i++;
+        }else{
+            arr[k] = M[j];
+            j++;
+        }
+        k++;
+    }
+
+    // When we run out of elements in either L or M
+    // pick up the remaining elements and put in A[p..r]
+    while (i < n1){
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2){
+       arr[k] = M[j];
+       j++;
+       k++; 
+    }
+   } 
+
+   
+
+void Sorting::mergeSort(std::vector<int>& arr){
+   
+   int left = 0;
+   int right = arr.size() - 1;
+   
+   if(left < right){
+
+    // m is the point where the array is divided
+    int middle = left + (right - left) / 2;
+
+    mergeSort(arr, left, middle);
+    mergeSort(arr, middle + 1, right);
+   
+   //Merge the sorted subarrays
+   merge(arr, left, middle, right);
+   }
+}
+
+void Sorting::quickSort(std::vector<int>& arr){
+
+
 
 }
 

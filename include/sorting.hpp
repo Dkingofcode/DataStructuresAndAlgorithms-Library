@@ -10,6 +10,12 @@ class Sorting {
       static void insertionSort(std::vector<int>& arr);
 
       static void selectionSort(std::vector<int>& arr);
+
+      static void mergeSort(std::vector<int>& arr);
+
+      static void quickSort(std::vector<int>& arr);
+
+      
 };
 
 #include "sorting.cpp"
