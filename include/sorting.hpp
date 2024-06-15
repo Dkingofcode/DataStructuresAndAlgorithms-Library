@@ -11,9 +11,9 @@ class Sorting {
 
       static void selectionSort(std::vector<int>& arr);
 
-      static void mergeSort(std::vector<int>& arr);
+      static void mergeSort(std::vector<int>& arr, int left, int right);
 
-      static void quickSort(std::vector<int>& arr);
+      static void quickSort(std::vector<int>& arr, int low, int high);
 
       
 };

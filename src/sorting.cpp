@@ -84,14 +84,12 @@ void Sorting::selectionSort(std::vector<int>& arr) {
             minimum = arr[j];
             arr[i] = minimum;
             j--;
-         }
-
-
-       }
+        }
+    }
 }
 
  
-   void merge(std::vector<int> arr, int p, int q, int r){
+ void merge(std::vector<int>& arr, int p, int q, int r){
 
     // Create L and R
     int n1 = q - p + 1;
@@ -142,12 +140,13 @@ void Sorting::selectionSort(std::vector<int>& arr) {
     }
    } 
 
+
    
 
-void Sorting::mergeSort(std::vector<int>& arr){
+void Sorting::mergeSort(std::vector<int>& arr, int left, int right){   
    
-   int left = 0;
-   int right = arr.size() - 1;
+  // int left = 0;
+  // int right = arr.size() - 1;
    
    if(left < right){
 
@@ -159,11 +158,79 @@ void Sorting::mergeSort(std::vector<int>& arr){
    
    //Merge the sorted subarrays
    merge(arr, left, middle, right);
-   }
+   };
+};
+
+
+// quickSort(array, leftIndex, rightIndex)
+//   if (leftIndex < rightIndex)
+//     pivotIndex <= partition(array, leftIndex, rightIndex)
+//     quickSort(array, leftIndex, pivotIndex - 1)
+//     quickSort(array, pivotIndex, rightIndex);
+
+
+// partition(array, leftIndex, rightIndex)
+//      set rightIndex as pivotIndex
+//      storeIndex <= leftIndex - 1
+//      for i <= leftIndex + 1 to rightmostIndex
+//      if element[i] < pivotElement
+//         swap element[i] and element[storeIndex]
+//         storeIndex++
+//      swap pivotElement and element[storeIndex + 1]
+//      return storeIndex + 1
+
+void  swap(int *a, int *b){
+    int t = *a;
+    *a = *b;
+    *b = t;
 }
 
-void Sorting::quickSort(std::vector<int>& arr){
+// function to rearrange the array
+int partition(int array[], int low, int high){
 
+    // select the rightmost element as pivot
+    int pivot = array[high];
+
+   //  pointer for  greater element
+   int i = (low - 1);
+
+   // traverse each element of the array
+   // compare them with the pivot
+   for (int j = low; j < high; j++){
+     if(array[j] <= pivot){
+
+        // if element smaller than pivot is found
+        // swap it with the greater element pointed by i
+        i++;
+
+        // swap element at i with element at j
+        swap(&array[i], &array[j]);
+     }
+   }
+
+   // swap pivot with the greater element at i
+   swap(&array[i + 1], &array[high]);
+
+   // return the partition point
+   return (i + 1);
+
+}
+
+
+void Sorting::quickSort(std::vector<int>& arr, int low, int high){
+if (low < high){
+
+    // find the pivot element such that
+    // elements smaller than pivot are on left of pivot
+    // elements greater than pivot are on right of pivot
+    int pi = partition(array, low, high);
+
+    // recursive call on the left of pivot
+    quickSort(array, low, pi - 1);
+
+    // recursive call on the right of pivot
+    quickSort(array, pi + 1, high);
+}
 
 
 }
