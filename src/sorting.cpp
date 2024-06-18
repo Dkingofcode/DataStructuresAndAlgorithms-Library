@@ -186,7 +186,7 @@ void  swap(int *a, int *b){
 }
 
 // function to rearrange the array
-int partition(int array[], int low, int high){
+int partition(std::vector<int> array, int low, int high){
 
     // select the rightmost element as pivot
     int pivot = array[high];
@@ -223,13 +223,13 @@ if (low < high){
     // find the pivot element such that
     // elements smaller than pivot are on left of pivot
     // elements greater than pivot are on right of pivot
-    int pi = partition(array, low, high);
+    int pi = partition(arr, low, high);
 
     // recursive call on the left of pivot
-    quickSort(array, low, pi - 1);
+    quickSort(arr, low, pi - 1);
 
     // recursive call on the right of pivot
-    quickSort(array, pi + 1, high);
+    quickSort(arr, pi + 1, high);
 }
 
 
