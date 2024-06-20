@@ -12,19 +12,19 @@ class Queue {
          Node* front;
 
          public:
-             Queue() : front(nullptr) {}
+             Queue() : front(nullptr), rear(nullptr) {}
              ~Queue();
 
              void push(T val);
              void pop();
-             T peek();
-             bool isEmpty();
-             void print();
+             T peek() const;
+             bool isEmpty() const;
+             void print() const;
 };
 
 #include "queue.cpp"
 
-#endif
+#endif   // QUEUE_HPP
 
 
 
