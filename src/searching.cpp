@@ -6,7 +6,7 @@
 #include "searching.hpp"
 
 
-int Searching::linearSearch(std::vector<int> array, int value){
+int linearSearch(std::vector<int> array, int value){
     for(int i = 0; i < array.size(); i++){
         if(array[i] == value){
             return i;
@@ -56,14 +56,14 @@ int binarySearch(std::vector<int> array, int x, int low, int high){
 //              return binarySearch(arr, x, low, mid - 1);
 
 
-   while(low <= high){
-        int mid = low + (high - low) / 2;
+//    while(low <= high){
+//         int mid = low + (high - low) / 2;
 
-        if(array[mid] == x){
-           return mid;
-        }else if(array[mid] < x){
-            return binarySearch(array, x, mid + 1, high);
-        }else{
-            return binarySearch(array, x, low, mid - 1);
-        }
-    }
+//         if(array[mid] == x){
+//            return mid;
+//         }else if(array[mid] < x){
+//             return binarySearch(array, x, mid + 1, high);
+//         }else{
+//             return binarySearch(array, x, low, mid - 1);
+//         }
+//     }

@@ -1,73 +1,76 @@
-//  // Push all values of wordList into a set
-//         // to make deletion from it easier and in less time complexity.
-//         Set < String > st = new HashSet < String > ();
-//         int len = wordList.length;
-//         for (int i = 0; i < len; i++) {
-//             st.add(wordList[i]);
-//         }
+#include "graph.hpp"
+#include <iostream>
 
-//         // Creating a queue ds which stores the words in a sequence which is
-//         // required to reach the targetWord after successive transformations.
-//         Queue < ArrayList < String >> q = new LinkedList < > ();
-//         ArrayList < String > ls = new ArrayList < > ();
-//         ls.add(startWord);
-//         q.add(ls);
-//         ArrayList < String > usedOnLevel = new ArrayList < > ();
-//         usedOnLevel.add(startWord);
-//         int level = 0;
+// template <typename T>
+// Graph<T>::~Graph() {
+//     while (front != nullptr){
+//         Node* temp = front;
+//         front = front->next;
+//         delete temp;
+//     }
+// }
 
-//         // A vector to store the resultant transformation sequence.
-//         ArrayList < ArrayList < String >> ans = new ArrayList < > ();
-//         int cnt = 0;
+template <typename T>
+void Graph<T>::addVertex(const T& vertex){
+    adjList[vertex];  // This will initialize the vertex with the adjacency list;
+}
 
-//         // BFS traversal with pushing the new formed sequence in queue 
-//         // when after a transformation, a word is found in wordList.
-//         while (!q.isEmpty()) {
-//             cnt++;
-//             ArrayList < String > vec = q.peek();
-//             q.remove();
+template <typename T>
+void Graph<T>::addEdge(const T& src, const T& dest) {
+    adjList[src].push_back(dest);
+    adjList[dest].push_back(src);  // If the graph is undirected, if the graph is directed pls comment this.
+}
 
-//              // Now, erase all words that have been
-//              // used in the previous levels to transform
-//              if (vec.size() > level) {
-//                 level++;
-//                 for (String it: usedOnLevel) {
-//                     st.remove(it);
-//                 }
-//             }
+template <typename T>
+void Graph<T>::removeVertex(const T& vertex) {
+    adjList.erase(vertex);
 
-//             String word = vec.get(vec.size() - 1);
+    for(auto& [key, neighbors] : adjList){
+        neighbors.remove(vertex);
+    }
+}
 
-//             // store the answers if the end word matches with targetWord.
-//             if (word.equals(targetWord)) {
-//                 // the first sequence where we reached the end.
-//                 if (ans.size() == 0) {
-//                     ans.add(vec);
-//                 } else if (ans.get(0).size() == vec.size()) {
-//                     ans.add(vec);
-//                 }
-//             }
-//             for (int i = 0; i < word.length(); i++) {
 
-//                 // Now, replace each character of ‘word’ with char
-//                 // from a-z then check if ‘word’ exists in wordList.
-//                 for (char c = 'a'; c <= 'z'; c++) {
-//                     char replacedCharArray[] = word.toCharArray();
-//                     replacedCharArray[i] = c;
-//                     String replacedWord = new String(replacedCharArray);
-//                     if (st.contains(replacedWord) == true) {
-//                         vec.add(replacedWord);
-//                         // Java works by reference, so enter the copy of vec
-//                         // otherwise if you remove word from vec in next lines, it will 
-//                         // remove from everywhere 
-//                         ArrayList < String > temp = new ArrayList < > (vec);
-//                         q.add(temp);
-//                         // mark as visited on the level 
-//                         usedOnLevel.add(replacedWord);
-//                         vec.remove(vec.size() - 1);
-//                     }
-//                 }
+template <typename T>
+void Graph<T>::removeEdge(const T& src, const T& dest) {
+    adjList[src].remove(dest);
+    adjList[dest].remove(src);  // If the graph is undirected, if directed pls comment this
+}
 
-//             }
-//         }
-//         return ans;
+template <typename T>
+void Graph<T>::printGraph() const {
+    for (const auto& [vertex, neighbors] : adjList) {
+        std::cout << vertex << ": ";
+        for (const auto& neighbor : neighbors) {
+            std::cout << neighbor << " ";
+        }
+    std:cout << std::endl;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
