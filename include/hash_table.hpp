@@ -1,25 +1,26 @@
 #ifndef HASHTABLE_HPP
 #define HASHTABLE_HPP
 
-template <typename T>
+#include <vector>
+#include <list>
+#include <utility>
+
+
+template <typename K, typename V>
 class HashTable {
     private:
-         struct Node {
-            T data;
-            Node* next;
-            Node(T val) : data(val), next(nullptr) {}
-         };
-         Node* ;
+         static const int DEFAULT_SIZE = 10;
+         std::vector<std::list<std::pair<K, V>>> table;
+         int hashFunction(const K& key) const;
 
          public:
-             HashTable() : top(nullptr) {}
-             ~HashTable();
+             HashTable();
 
-             void push(T val);
-             void pop();
-             T peek();
-             bool isEmpty();
-             void print();
+             void insert(const K& key, const V& value);
+             void remove(const K& key);
+             V find(const K& key) const;
+             bool contains(const K& key) const;
+             void print() const;
 };
 
 #include "hashtable.cpp"
