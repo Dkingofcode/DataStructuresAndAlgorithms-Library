@@ -1,25 +1,33 @@
 #ifndef TREE_HPP
 #define TREE_HPP
 
+#include <vector>
+#include <list>
+#include <unordered_map>
+
 template <typename T>
 class Tree {
     private:
          struct Node {
             T data;
-            Node* next;
-            Node(T val) : data(val), next(nullptr) {}
+            Node* left;
+            Node* right;
+            Node(T val) : data(val), left(nullptr), right(nullptr) {}
          };
-         Node* root;
+        Node*  root;
+         
+         void destroyTree(Node* node);
+         void printInOrder(Node* node) const;
+         void printPreOrder(Node* node) const;
+         void printPostOrder(Node* node) const;
 
          public:
-             tree() : root(nullptr) {}
+             Tree() : root(nullptr) {}
              ~Tree();
 
-             void push(T val);
-             void pop();
-             T peek();
-             bool isEmpty();
-             void print();
+             bool isEmpty() const;
+             void insert(T val);
+             void print() const;
 };
 
 #include "tree.cpp"
