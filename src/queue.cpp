@@ -4,10 +4,11 @@
 
 template <typename T>
 Queue<T>::~Queue() {
-    while ( !isEmpty()){
+    while (!isEmpty()){
         pop();
     }
 }
+
 
 template <typename T>
 void Queue<T>::push(T val){
